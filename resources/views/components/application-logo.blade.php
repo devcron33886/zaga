@@ -1,0 +1,1 @@
+<h1 class="font-bold text-2xl text-center text-lime-600">{{ config('app.name')}}</h1>
