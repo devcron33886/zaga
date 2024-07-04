@@ -22,7 +22,7 @@ class BarSalaryController extends Controller
             return $employeeSalaries[$employee->id];
         });
 
-        $total = Bar::sum('payout');
+        $total = Bar::withoutGlobalScope(ReportScope::class)->sum('payout');
 
         return view('salaries.bar.index', ['employees' => $sortedEmployees, 'employeeSalaries' => $employeeSalaries, 'total' => $total]);
     }

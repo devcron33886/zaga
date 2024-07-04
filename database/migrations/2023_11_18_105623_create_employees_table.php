@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('code');
             $table->string('names');
             $table->string('phone_number')->unique();
-            $table->string('phone_name')->virtualAs('concat(phone_number, \' \', names)');
+            $table->string('phone_name')->virtualAs('phone_number || " " || names');
             $table->string('location');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();

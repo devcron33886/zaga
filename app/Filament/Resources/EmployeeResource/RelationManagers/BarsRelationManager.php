@@ -10,14 +10,13 @@ use Filament\Tables;
 use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 
 class BarsRelationManager extends RelationManager
 {
     protected static string $relationship = 'bars';
 
-    public  function form(Form $form): Form
+    public function form(Form $form): Form
     {
         return $form
             ->schema([
@@ -148,7 +147,7 @@ class BarsRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
-            ->modifyQueryUsing(fn (Builder $query)=>$query->withoutGlobalScope(ReportScope::class))
+            ->modifyQueryUsing(fn (Builder $query) => $query->withoutGlobalScope(ReportScope::class))
             ->columns([
                 Tables\Columns\TextColumn::make('employee.names')
                     ->numeric()
@@ -215,5 +214,4 @@ class BarsRelationManager extends RelationManager
 
             ]);
     }
-
 }

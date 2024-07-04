@@ -107,6 +107,6 @@ class EmployeeResource extends Resource
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->where('user_id', '=', Auth::user()->id);
-        
+
     }
 }

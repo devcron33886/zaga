@@ -10,7 +10,6 @@ use Filament\Tables;
 use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SaunasRelationManager extends RelationManager
 {
@@ -29,7 +28,7 @@ class SaunasRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
-        ->modifyQueryUsing(fn (Builder $query)=>$query->withoutGlobalScope(SaunaScope::class))
+            ->modifyQueryUsing(fn (Builder $query) => $query->withoutGlobalScope(SaunaScope::class))
             ->columns([
                 Tables\Columns\TextColumn::make('employee.names')
                     ->numeric()
